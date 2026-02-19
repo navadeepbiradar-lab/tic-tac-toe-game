@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <audio src="C:\Users\surekha\Downloads\engyclick-sound-effects-of-fireworks-diwali-celebration-421220.mp3">
+    </audio>
+    <script src="/socket.io/socket.io.js"></script>
+</head>
+<body>
+<header>
+     <h1>
+        <b>❌ WELCOME TO MY GAME ⭕</b>
+     </h1>
+</header>
+<div id="highscore">
+        Highest Score: <b id="highScoreValue">0</b>
+</div>
+<div id="score">
+     <span>X : <b id="xScore">0</b></span>
+     <span> | O : <b id="oScore">0</b></span>
+</div>
+<main>
+  <div id="ox">
+          <div id="line"> </div>
+              <input id="one">
+              <input id="one">
+              <input id="one"><br>
+              <input id="one">
+              <input id="one">
+              <input id="one"><br>
+              <input id="one">
+              <input id="one"> 
+              <input id="one">
+  </div>
+<div id="aiThinking" style="display:none;">
+    🤖 AI is thinking...
+</div>
+</main>
+
+<footer>
+    <button id="button"> RESET</button> 
+    <button id="resetScore">RESET SCORE</button>
+    <button id="modeBtn">PLAY VS AI</button>
+    <button id="easyBtn">EASY</button>
+    <button id="hardBtn">HARD</button>
+    <button id="impossibleBtn">IMPOSSIBLE</button>
+    <button id="onlineBtn">ONLINE MULTIPLAYER</button>
+</footer>
+
+</body>
+     <script src="one.js"></script>
+</html>
