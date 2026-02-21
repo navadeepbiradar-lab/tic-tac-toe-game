@@ -1,55 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
-    <audio src="C:\Users\surekha\Downloads\engyclick-sound-effects-of-fireworks-diwali-celebration-421220.mp3">
-    </audio>
-    <script src="/socket.io/socket.io.js"></script>
+  <title>Tic Tac Toe Online</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header>
-     <h1>
-        <b>❌ WELCOME TO MY GAME ⭕</b>
-     </h1>
-</header>
-<div id="highscore">
-        Highest Score: <b id="highScoreValue">0</b>
-</div>
-<div id="score">
-     <span>X : <b id="xScore">0</b></span>
-     <span> | O : <b id="oScore">0</b></span>
-</div>
-<main>
-  <div id="ox">
-          <div id="line"> </div>
-              <input id="one">
-              <input id="one">
-              <input id="one"><br>
-              <input id="one">
-              <input id="one">
-              <input id="one"><br>
-              <input id="one">
-              <input id="one"> 
-              <input id="one">
+
+  <h2 id="status">Enter Room ID</h2>
+
+  <div id="board">
+    <div class="cell" onclick="makeMove(0)"></div>
+    <div class="cell" onclick="makeMove(1)"></div>
+    <div class="cell" onclick="makeMove(2)"></div>
+
+    <div class="cell" onclick="makeMove(3)"></div>
+    <div class="cell" onclick="makeMove(4)"></div>
+    <div class="cell" onclick="makeMove(5)"></div>
+
+    <div class="cell" onclick="makeMove(6)"></div>
+    <div class="cell" onclick="makeMove(7)"></div>
+    <div class="cell" onclick="makeMove(8)"></div>
   </div>
-<div id="aiThinking" style="display:none;">
-    🤖 AI is thinking...
-</div>
-</main>
 
-<footer>
-    <button id="button"> RESET</button> 
-    <button id="resetScore">RESET SCORE</button>
-    <button id="modeBtn">PLAY VS AI</button>
-    <button id="easyBtn">EASY</button>
-    <button id="hardBtn">HARD</button>
-    <button id="impossibleBtn">IMPOSSIBLE</button>
-    <button id="onlineBtn">ONLINE MULTIPLAYER</button>
-</footer>
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
 
+  <script>
+    const firebaseConfig = {
+      apiKey: "PASTE_YOUR_API_KEY",
+      authDomain: "YOUR_PROJECT.firebaseapp.com",
+      databaseURL: "https://YOUR_PROJECT-default-rtdb.firebaseio.com",
+      projectId: "YOUR_PROJECT"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.database();
+  </script>
+
+  <script src="script.js"></script>
 </body>
-     <script src="one.js"></script>
 </html>
