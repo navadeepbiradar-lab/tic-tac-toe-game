@@ -1,44 +1,33 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Tic Tac Toe Online</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <title>Multiplayer Tic Tac Toe</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <h2 id="status">Enter Room ID</h2>
+  <h1>Multiplayer Tic Tac Toe</h1>
 
-  <div id="board">
-    <div class="cell" onclick="makeMove(0)"></div>
-    <div class="cell" onclick="makeMove(1)"></div>
-    <div class="cell" onclick="makeMove(2)"></div>
-
-    <div class="cell" onclick="makeMove(3)"></div>
-    <div class="cell" onclick="makeMove(4)"></div>
-    <div class="cell" onclick="makeMove(5)"></div>
-
-    <div class="cell" onclick="makeMove(6)"></div>
-    <div class="cell" onclick="makeMove(7)"></div>
-    <div class="cell" onclick="makeMove(8)"></div>
+  <div class="room">
+    <input id="roomId" placeholder="Enter Room ID" />
+    <button onclick="joinRoom()">Join Room</button>
   </div>
 
-  <!-- Firebase -->
-  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+  <h2 id="status">Not connected</h2>
 
-  <script>
-    const firebaseConfig = {
-      apiKey: "PASTE_YOUR_API_KEY",
-      authDomain: "YOUR_PROJECT.firebaseapp.com",
-      databaseURL: "https://YOUR_PROJECT-default-rtdb.firebaseio.com",
-      projectId: "YOUR_PROJECT"
-    };
+  <div class="board" id="board">
+    <div class="cell" onclick="play(0)"></div>
+    <div class="cell" onclick="play(1)"></div>
+    <div class="cell" onclick="play(2)"></div>
+    <div class="cell" onclick="play(3)"></div>
+    <div class="cell" onclick="play(4)"></div>
+    <div class="cell" onclick="play(5)"></div>
+    <div class="cell" onclick="play(6)"></div>
+    <div class="cell" onclick="play(7)"></div>
+    <div class="cell" onclick="play(8)"></div>
+  </div>
 
-    firebase.initializeApp(firebaseConfig);
-    const db = firebase.database();
-  </script>
-
-  <script src="script.js"></script>
-<script type="module" src="script.js"></script>
+  <script type="module" src="script.js"></script>
 </body>
 </html>
