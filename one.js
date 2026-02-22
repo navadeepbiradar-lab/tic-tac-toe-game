@@ -8,22 +8,54 @@ import {
   getDoc
 } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js";
 
-/* 🔥 Firebase config (mee console nundi copy cheyyali) */
+// 🔥 Firebase config (replace with YOUR config)
 const firebaseConfig = {
   apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_PROJECT.firebaseapp.com",
+  authDomain: "tic-tac-toe-online.firebaseapp.com",
   projectId: "tic-tac-toe-online",
 };
 
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
+firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
 
-let roomRef;
-let mySymbol = "";
-let myTurn = false;
+let roomId = prompt("Enter Room ID");
+const roomRef = db.collection("rooms").doc(roomId);
 
-const cells = document.querySelectorAll(".cell");
-const statusText = document.getElementById("status");
+let currentPlayer = "X";
+
+// create room if not exists
+roomRef.get().then(doc => {
+  if (!doc.exists) {
+    roomRef.set({
+      board: Array(9).fill(""),
+      turn: "X"
+    });
+  }
+});
+
+// listen for updates
+roomRef.onSnapshot(doc => {
+  const data = doc.data();
+  updateBoard(data.board);
+  currentPlayer = data.turn;
+});
+
+function makeMove(index) {
+  roomRef.get().then(doc => {
+    const data = doc.data();
+    if (data.board[index] === "") {
+      data.board[index] = data.turn;
+      data.turn = data.turn === "X" ? "O" : "X";
+      roomRef.update(data);
+    }
+  });
+}
+
+function updateBoard(board) {
+  document.querySelectorAll(".cell").forEach((cell, i) => {
+    cell.innerText = board[i];
+  });
+}
 
 /* JOIN ROOM */
 window.joinRoom = async function () {
