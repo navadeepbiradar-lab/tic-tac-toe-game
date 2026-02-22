@@ -1,4 +1,4 @@
-// ================= FIREBASE IMPORTS =================
+// ================= FIREBASE =================
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
 import {
   getFirestore,
@@ -9,20 +9,18 @@ import {
   getDoc
 } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js";
 
-// ================= YOUR FIREBASE CONFIG =================
-// ⚠️ Replace with YOUR Firebase project keys
+// 🔴 PUT YOUR REAL FIREBASE DETAILS HERE
 const firebaseConfig = {
   apiKey: "YOUR_API_KEY",
   authDomain: "YOUR_PROJECT.firebaseapp.com",
-  projectId: "YOUR_PROJECT_ID",
+  projectId: "YOUR_PROJECT_ID"
 };
 
-// ================= INIT FIREBASE =================
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-// ================= GAME VARIABLES =================
-let roomRef = null;
+// ================= GAME STATE =================
+let roomRef;
 let mySymbol = "X";
 
 // ================= JOIN ROOM =================
@@ -37,14 +35,12 @@ async function joinRoom() {
   const snap = await getDoc(roomRef);
 
   if (!snap.exists()) {
-    // First player creates room
     await setDoc(roomRef, {
       board: Array(9).fill(""),
       turn: "X"
     });
     mySymbol = "X";
   } else {
-    // Second player joins
     mySymbol = "O";
   }
 
@@ -54,18 +50,17 @@ async function joinRoom() {
   listenRoom();
 }
 
-// ================= REALTIME LISTENER =================
+// ================= LISTEN =================
 function listenRoom() {
-  onSnapshot(roomRef, (docSnap) => {
-    const data = docSnap.data();
-    renderBoard(data.board, data.turn);
+  onSnapshot(roomRef, (snap) => {
+    const data = snap.data();
+    drawBoard(data.board, data.turn);
   });
 }
 
-// ================= RENDER BOARD =================
-function renderBoard(board, turn) {
+// ================= DRAW BOARD =================
+function drawBoard(board, turn) {
   const cells = document.querySelectorAll(".cell");
-
   cells.forEach((cell, i) => {
     cell.innerText = board[i];
     cell.onclick = () => makeMove(i, board, turn);
@@ -85,5 +80,5 @@ async function makeMove(index, board, turn) {
   });
 }
 
-// ================= EXPOSE FUNCTION TO HTML =================
+// ================= EXPOSE =================
 window.joinRoom = joinRoom;
