@@ -1,3 +1,13 @@
+// your imports at top
+import { something } from "./firebase.js"; // example
+
+function joinRoom() {
+  console.log("Join room clicked");
+}
+
+// expose to HTML
+window.joinRoom = joinRoom;
+
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
 import {
   getFirestore,
