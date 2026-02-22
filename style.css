@@ -1,6 +1,17 @@
 body {
+  font-family: Arial, sans-serif;
   text-align: center;
-  font-family: Arial;
+}
+
+input {
+  padding: 8px;
+  font-size: 16px;
+}
+
+button {
+  padding: 8px 12px;
+  font-size: 16px;
+  margin-left: 5px;
 }
 
 .board {
@@ -14,14 +25,10 @@ body {
 .cell {
   width: 100px;
   height: 100px;
-  border: 2px solid black;
+  border: 3px solid black;
   font-size: 48px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-}
-
-.room {
-  margin: 20px;
 }
