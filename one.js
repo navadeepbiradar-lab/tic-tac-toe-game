@@ -141,3 +141,8 @@ function checkWinner(b) {
   }
   return "";
 }
+function joinRoom() {
+  const roomId = document.getElementById("roomId").value;
+  document.getElementById("status").innerText =
+    "Room ID: " + roomId + " (Frontend only)";
+}
